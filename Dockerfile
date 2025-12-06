@@ -4,7 +4,7 @@ FROM node:lts-alpine AS builder
 WORKDIR /app
 
 # Only copy dependency files first to enable caching. Because when change any dependencies, then only re-run npm ci
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm ci
 
 # Copy the rest of the source code
