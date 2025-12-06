@@ -3,9 +3,9 @@ FROM node:lts-alpine AS builder
 
 WORKDIR /app
 
-# Only copy dependency files first to enable caching. Because when change any dependencies, then only re-run npm ci
+# Only copy dependency files first to enable caching. Because when change any dependencies, then only re-run npm i
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 # Copy the rest of the source code
 COPY . .
@@ -24,4 +24,4 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 EXPOSE 80
 
 # Optional: run nginx as non-root user
-USER nginx
+CMD ["nginx", "-g", "daemon off;"]
