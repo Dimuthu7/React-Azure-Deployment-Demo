@@ -135,23 +135,6 @@ AZURE_SUBSCRIPTION_ID
 
 ---
 
-# 🧪 Why Use Commit SHA as Image Tag?
-
-Every commit has a unique hash like:
-
-```
-3fd9c28acb93...
-```
-
-This hash is used as the **Docker image tag**, providing:
-
-✔ Guaranteed versioning  
-✔ Easy rollbacks  
-✔ No overwriting old images  
-✔ Full traceability  
-
----
-
 # 🔐 Understanding Azure OIDC  
 OIDC = **OpenID Connect**
 
@@ -168,31 +151,6 @@ This enables **passwordless login** from GitHub → Azure.
 Microsoft recommends OIDC for all modern CI/CD flows.
 
 ---
-
-# 🌐 Azure CLI — Static Web App
-
-### Create Resource Group  
-```
-az group create --name rg-vite-app --location eastus
-```
-
-### Create Static Web App  
-```
-az staticwebapp create \
-  --name vite-static-app \
-  --resource-group rg-vite-app \
-  --location eastus2 \
-  --source . \
-  --app-location "/" \
-  --output-location "dist"
-```
-
-### Get Deployment Token  
-```
-az staticwebapp secrets list \
-  --name vite-static-app \
-  --query "properties.apiKey" -o tsv
-```
 
 # 🧱 Architecture Overview
 
